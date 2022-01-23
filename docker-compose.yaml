@@ -1,0 +1,18 @@
+services:  
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend/:/usr/src/
+
+  frontend:
+    image: node:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/finance-dashboard/:/usr/src
+    environment:
+      - "CHOKIDAR_USEPOLLING=true"
+    working_dir: /usr/src
+    command: npm start
