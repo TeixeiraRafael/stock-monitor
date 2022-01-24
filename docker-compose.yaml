@@ -7,12 +7,6 @@ services:
       - ./backend/:/usr/src/
 
   frontend:
-    image: node:latest
+    build: ./frontend
     ports:
       - "3000:3000"
-    volumes:
-      - ./frontend/finance-dashboard/:/usr/src
-    environment:
-      - "CHOKIDAR_USEPOLLING=true"
-    working_dir: /usr/src
-    command: npm start
